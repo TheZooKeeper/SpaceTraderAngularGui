@@ -1,4 +1,8 @@
-<p>settings works!</p>
+<h2>Settings</h2>
+<div>
+    <h4>Game/API Status:</h4>
+     <div><span>{{this.currentStatus}}</span></div> 
+</div>
 <div>
     <h4>Username:</h4>
     <div><span>Current: </span>{{spaceTrader.getUserName()}}</div>
@@ -9,5 +13,6 @@
     <h4>Token: </h4>
     <div><span>Current: </span>{{spaceTrader.getToken()}}</div>
     <div><label for="token">New: </label><input #tokenInput type="text" id="token" name="token" (keyup)="this.newToken = tokenInput.value;"></div><br>
-    <div><button (click)="this.spaceTrader.setToken(this.newToken);">Set New Token</button></div>
+    <div><button (click)="this.spaceTrader.setToken(this.newToken);">Set New Token</button></div><br>
+    <div><button (click)="this.spaceTrader.createUser();">Get New Token</button></div>
 </div>
