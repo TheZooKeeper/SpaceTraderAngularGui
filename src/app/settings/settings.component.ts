@@ -8,6 +8,8 @@ import { SpaceTradersWrapper } from '../space-traders-wrapper'
 })
 export class SettingsComponent implements OnInit {
   spaceTrader: SpaceTradersWrapper
+  newUserName = "";
+  newToken = "";
   constructor() {
     this.spaceTrader = SpaceTradersWrapper.getInstance();
   }

@@ -1,5 +1,6 @@
 import { SpaceTraders } from 'spacetraders-sdk/dist/index';
 import {
+    AccountResponse,
     AvailableLoanResponse, AvailableShipResponse, FlightPlanResponse, LoanType, LocationsResponse,
     MarketplaceResponse, PurchaseResponse, StatusResponse, TokenResponse
 } from 'spacetraders-sdk/dist/types';
@@ -19,13 +20,25 @@ export class SpaceTradersWrapper {
         return SpaceTradersWrapper.instance;
     }
     setUserName(uName: string): void {
-        this.uName = uName;
+        if(uName.length == 0) {
+            alert("Username cannot be empty!");
+            return;
+        }
+        if (confirm("This will immediately change the current user ID. Please update token as well. Are you sure?")) {
+            this.uName = uName;
+        }
     }
     getUserName(): string {
        return this.uName;
     }
     setToken(token: string): void {
-        this.token = token;
+        if(token.length == 0) {
+            alert("Token cannot be empty!");
+            return;
+        }
+        if (confirm("This will immediately change the current token and could break the game. Are you sure?")) {
+            this.token = token;
+        }
     }
     getToken(): string {
         return this.token;
@@ -40,7 +53,7 @@ export class SpaceTradersWrapper {
     createUser(): Promise<TokenResponse> {
         return this.spaceTrade.createUser(this.uName);
     }
-    getAccount(): Promise<StatusResponse> {
+    getAccount(): Promise<AccountResponse> {
         return this.spaceTrade.getAccount(this.uName, this.token);
     }
     createFlightPlan(shipId: string, destination: number): Promise<FlightPlanResponse> {

@@ -1,7 +1,13 @@
 <p>settings works!</p>
 <div>
-    <h6>Username: </h6>{{spaceTrader.getUserName}}
+    <h4>Username:</h4>
+    <div><span>Current: </span>{{spaceTrader.getUserName()}}</div>
+    <div><label for="uName">New: </label><input #uNameInput type="text" id="uName" name="uName" (keyup)="this.newUserName = uNameInput.value;"></div><br>
+    <div><button (click)="this.spaceTrader.setUserName(this.newUserName);">Set New Username</button></div>
 </div>
 <div>
-    <h6>Token: </h6>{{spaceTrader.getToken}}
+    <h4>Token: </h4>
+    <div><span>Current: </span>{{spaceTrader.getToken()}}</div>
+    <div><label for="token">New: </label><input #tokenInput type="text" id="token" name="token" (keyup)="this.newToken = tokenInput.value;"></div><br>
+    <div><button (click)="this.spaceTrader.setToken(this.newToken);">Set New Token</button></div>
 </div>
